@@ -1,3 +1,6 @@
 Header {
+    position: absolute;
+    align: left top;
     padding: 1 2;
+    height: 3;
 }

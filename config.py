@@ -5,7 +5,7 @@ from typing import Any
 
 class Config:
     _instance = None
-    _config = None
+    _config: dict | None = None
 
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
