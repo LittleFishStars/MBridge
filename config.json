@@ -21,5 +21,6 @@
         "input-selection-background": "#81a1c1 35%"
       }
     }
-  }
+  },
+  "data_path": "./data"
 }

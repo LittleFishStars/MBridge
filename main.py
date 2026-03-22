@@ -1,39 +1,26 @@
 from textual.app import App, ComposeResult
 from textual.theme import Theme
-from textual.widget import Widget
-from textual.widgets import Footer, Label
+from textual.widgets import Footer
 
-from config import Config
-from i18n import I18n
+from screen.content import Content
+from screen.control import Header
+from tool.config import Config
+from tool.i18n import I18n
 
 I18n().set_path("./lang")
 I18n().set_lang("en")
 
 
-class Header(Widget):
-    DEFAULT_CSS = """
-        Header {
-            layout: horizontal;
-            position: absolute;
-            align: left top;
-            padding: 1 2;
-            height: 3;
-        }
-        #title { text-style: bold; color: $text-primary; }
-        #version { color: $text-secondary; }
-    """
-
-    def compose(self) -> ComposeResult:
-        yield Label(I18n().t("title"), id="title")
-        yield Label(" ")
-        yield Label(f"v{Config().get("version")}", id="version")
-
-
 class MBridgeApp(App):
-    BINDINGS = [('^Q', "quit", I18n().t("quit_text"))]
+    CSS_PATH = "main.css"
+    BINDINGS = [
+        ('^Q', "quit", I18n().t("quit_text")),
+        ('^S', "send_message", I18n().t("send_text"))
+    ]
 
     def compose(self) -> ComposeResult:
         yield Header()
+        yield Content()
         yield Footer(show_command_palette=False)
 
     def on_mount(self) -> None:

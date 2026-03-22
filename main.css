@@ -1,6 +1,27 @@
-Header {
-    position: absolute;
-    align: left top;
-    padding: 1 2;
-    height: 3;
+Footer {
+    background: $background;
+    padding: 0 2;
+}
+
+FriendList {
+    background: $background;
+    background-tint: $background;
+    border: round $border 40%;
+    padding: 0 1;
+}
+
+Rule {
+    margin: 0 0;
+    color: $border;
+}
+
+Chat {
+    layout: vertical;
+    border: round $border 40%;
+    padding: 0 1;
+}
+
+ChatInput {
+    background: $background;
+    border: round $border 40%;
 }
