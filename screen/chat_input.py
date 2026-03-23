@@ -1,11 +1,22 @@
 from textual import events
+from textual.binding import Binding
 from textual.color import Color
+from textual.message import Message
 from textual.widgets import TextArea
 
-from tool.i18n import I18n
+from tool.i18n import get_i18n
+
+_ = get_i18n()
 
 
 class ChatInput(TextArea):
+    BINDINGS = [
+        Binding('ctrl+s', "send_message", _("Send")),
+        Binding("ctrl+z", "undo", _("Undo")),
+        Binding("ctrl+y", "redo", _("Redo")),
+        Binding("shift+" + _("ArrowKey"), "", _("Cursor select")),
+        Binding("ctrl+e", "expand", _("Expand") + "/" + _("Collapse")),
+    ]
     _char_ch_en = {
         "：": ":",
         "；": ";",
@@ -45,6 +56,13 @@ class ChatInput(TextArea):
         "’": "‘’",
     }
 
+    class SendMessage(Message):
+        """自定义事件：发送消息"""
+
+        def __init__(self, message: str):
+            super().__init__()
+            self.message = message
+
     def __init__(self, text: str, *, replace_double_char: bool = True, replace_chinese_char: bool = True, **kwargs):
         super().__init__(text, **kwargs)
         self.replace_double_char = replace_double_char
@@ -70,7 +88,7 @@ class ChatInput(TextArea):
             event.prevent_default()
 
     def on_mount(self) -> None:
-        self.border_title = I18n().t("chat_input_title")
+        self.border_title = _("Input")
 
     def on_focus(self) -> None:
         self.styles.border = ("round", self.app.theme_variables.get("border"))
@@ -82,3 +100,12 @@ class ChatInput(TextArea):
                                         Color(0, 0, 0, 0.4)))
         self.styles.border_title_style = "none"
         self.parent.on_blur()
+
+    def action_send_message(self):
+        self.post_message(self.SendMessage(self.text))
+
+    def action_expand(self) -> None:
+        if self.styles.height.value == 1:
+            self.styles.height = "12fr"
+        else:
+            self.styles.height = "1fr"

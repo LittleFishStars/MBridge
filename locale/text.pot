@@ -1,0 +1,79 @@
+# Translations template for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-03-23 18:09+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#: main.py:17
+msgid "Quit"
+msgstr ""
+
+#: screen/chat.py:23
+msgid "Chat"
+msgstr ""
+
+#: screen/chat_input.py:13
+msgid "Send"
+msgstr ""
+
+#: screen/chat_input.py:14
+msgid "Undo"
+msgstr ""
+
+#: screen/chat_input.py:15
+msgid "Redo"
+msgstr ""
+
+#: screen/chat_input.py:16
+msgid "ArrowKey"
+msgstr ""
+
+#: screen/chat_input.py:16
+msgid "Cursor select"
+msgstr ""
+
+#: screen/chat_input.py:17
+msgid "Expand"
+msgstr ""
+
+#: screen/chat_input.py:17
+msgid "Collapse"
+msgstr ""
+
+#: screen/chat_input.py:83
+msgid "Input"
+msgstr ""
+
+#: screen/control.py:29
+msgid "MBridge"
+msgstr ""
+
+#: screen/friend_list.py:12
+msgid "Select"
+msgstr ""
+
+#: screen/friend_list.py:13
+msgid "Cursor up"
+msgstr ""
+
+#: screen/friend_list.py:14
+msgid "Cursor down"
+msgstr ""
+
+#: screen/friend_list.py:18
+msgid "FriendList"
+msgstr ""
+
