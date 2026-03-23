@@ -6,7 +6,9 @@ from textual.widgets import Label
 from textual.widgets._header import HeaderClockSpace
 
 from tool.config import Config
-from tool.i18n import I18n
+from tool.i18n import get_i18n
+
+_ = get_i18n()
 
 
 class Header(Widget):
@@ -24,7 +26,7 @@ class Header(Widget):
     """
 
     def compose(self) -> ComposeResult:
-        yield Label(I18n().t("title"), id="title")
+        yield Label(_("MBridge"), id="title")
         yield Label(" ")
         yield Label(f"v{Config().get("version")}", id="version")
         yield Clock()

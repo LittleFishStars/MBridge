@@ -15,21 +15,6 @@ class Config:
 
     @classmethod
     def _load_config(cls, config_path: str = "./config.json") -> dict[str, Any]:
-        """
-        加载JSON配置文件，带异常处理和路径容错
-
-        Args:
-            config_path: 配置文件路径，默认使用./config.json
-
-        Returns:
-            加载后的配置字典
-
-        Raises:
-            FileNotFoundError: 配置文件不存在
-            json.JSONDecodeError: JSON格式错误
-            Exception: 其他加载异常
-        """
-
         # 检查文件是否存在
         if not os.path.exists(config_path):
             raise FileNotFoundError(f"配置文件不存在: {config_path}")

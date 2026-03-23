@@ -1,5 +1,6 @@
 {
   "version": "0.0.1",
+  "language": "en_US",
   "theme": {
     "name": "tokyo-night",
     "is_user": false,

@@ -1,21 +1,20 @@
 from textual.app import App, ComposeResult
+from textual.binding import Binding
 from textual.theme import Theme
 from textual.widgets import Footer
 
 from screen.content import Content
 from screen.control import Header
 from tool.config import Config
-from tool.i18n import I18n
+from tool.i18n import get_i18n
 
-I18n().set_path("./lang")
-I18n().set_lang("en")
+_ = get_i18n()
 
 
 class MBridgeApp(App):
-    CSS_PATH = "main.css"
+    CSS_PATH = "main.scss"
     BINDINGS = [
-        ('^Q', "quit", I18n().t("quit_text")),
-        ('^S', "send_message", I18n().t("send_text"))
+        Binding('ctrl+q', "quit", _("Quit")),
     ]
 
     def compose(self) -> ComposeResult:

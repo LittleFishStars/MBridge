@@ -4,7 +4,9 @@ from textual.widget import Widget
 from textual.widgets import Label
 
 from screen.chat_input import ChatInput
-from tool.i18n import I18n
+from tool.i18n import get_i18n
+
+_ = get_i18n()
 
 
 class Chat(Widget):
@@ -13,12 +15,23 @@ class Chat(Widget):
     #input { height: 1fr; }
     """
 
+    def __init__(
+            self,
+            friend_name: str | None = None,
+            friend_id: str | None = None
+    ) -> None:
+        super().__init__()
+        self.friend_name = friend_name
+        self.friend_id = friend_id
+
     def compose(self) -> ComposeResult:
-        yield Label(I18n().t("chat_title"), id="message")
-        yield ChatInput("input", id="input")
+        if self.friend_name is not None:
+            yield Label("Chat", id="message")
+            yield ChatInput("input", id="input")
 
     def on_mount(self) -> None:
-        self.border_title = I18n().t("chat_title")
+        if self.friend_name is not None:
+            self.border_title = self.friend_name
 
     def on_focus(self) -> None:
         self.styles.border = ("round", self.app.theme_variables.get("border"))
