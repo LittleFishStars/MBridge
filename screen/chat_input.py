@@ -17,6 +17,7 @@ class ChatInput(TextArea):
         Binding("shift+" + _("ArrowKey"), "", _("Cursor select")),
         Binding("ctrl+e", "expand", _("Expand") + "/" + _("Collapse")),
     ]
+
     _char_ch_en = {
         "：": ":",
         "；": ";",

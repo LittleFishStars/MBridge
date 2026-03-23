@@ -15,12 +15,8 @@ class FriendList(ListView):
         Binding("up", "cursor_up", _("Cursor up")),
         Binding("down", "cursor_down", _("Cursor down")),
     ]
-    DEFAULT_CSS = """
-    FriendList {
-        border: round $border 40%;
-        padding: 0 1;
-    }
-    """
+
+    selected_child: Friend = None
 
     class ChatChanged(Message):
         """自定义事件：更换聊天对象"""
@@ -45,4 +41,9 @@ class FriendList(ListView):
 
     def on_list_view_selected(self, event) -> None:
         friend: Friend = event.item
-        self.post_message(self.ChatChanged(friend.friend_name, friend.friend_id))
+        if friend != self.selected_child:
+            if self.selected_child is not None:
+                self.selected_child.selected = False
+            self.selected_child = friend
+            friend.selected = True
+            self.post_message(self.ChatChanged(friend.friend_name, friend.friend_id))

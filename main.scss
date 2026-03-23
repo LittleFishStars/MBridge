@@ -1,27 +1,60 @@
 Footer {
-    background: $background;
-    padding: 0 2;
+  background: $background;
+  padding: 0 2;
 }
 
 FriendList {
-    background: $background;
-    background-tint: $background;
-    border: round $border 40%;
-    padding: 0 1;
-}
+  background: $background;
+  background-tint: $background;
+  border: round $border 40%;
+  padding: 0 1;
 
-Rule {
-    margin: 0 0;
-    color: $border;
+  &:focus {
+    & > ListItem.-highlight {
+      color: $text-primary;
+      background: $primary-muted;
+    }
+
+    & > ListItem.-selected {
+      color: $block-cursor-foreground;
+      background: $block-cursor-background;
+    }
+
+    & > ListItem.-selected.-highlight {
+      color: $text-primary;
+      background: $block-cursor-background;
+    }
+  }
+
+  & > ListItem.-selected {
+    color: $block-cursor-foreground;
+    background: $primary-muted;
+  }
+
+  & > ListItem.-highlight {
+    color: $foreground;
+    background: $background;
+  }
+
+  & > ListItem.-selected.-highlight {
+    color: $block-cursor-foreground;
+    background: $primary-muted;
+  }
 }
 
 Chat {
-    layout: vertical;
-    border: round $border 40%;
-    padding: 0 1;
+  layout: vertical;
+  border: round $border 40%;
+  padding: 0 1;
+}
+
+MessageList {
+  background: $background;
+  background-tint: $background;
+  padding: 1 0;
 }
 
 ChatInput {
-    background: $background;
-    border: round $border 40%;
+  background: $background;
+  border: round $border 40%;
 }
