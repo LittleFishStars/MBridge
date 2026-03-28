@@ -1,6 +1,6 @@
+from loguru import logger
 from textual import events
 from textual.binding import Binding
-from textual.color import Color
 from textual.message import Message
 from textual.widgets import TextArea
 
@@ -91,18 +91,8 @@ class ChatInput(TextArea):
     def on_mount(self) -> None:
         self.border_title = _("Input")
 
-    def on_focus(self) -> None:
-        self.styles.border = ("round", self.app.theme_variables.get("border"))
-        self.styles.border_title_style = "bold"
-        self.parent.on_focus()
-
-    def on_blur(self) -> None:
-        self.styles.border = ("round", (Color.parse(self.app.theme_variables.get("border")) +
-                                        Color(0, 0, 0, 0.4)))
-        self.styles.border_title_style = "none"
-        self.parent.on_blur()
-
     def action_send_message(self):
+        logger.info(f"SendMessage {self.text}")
         self.post_message(self.SendMessage(self.text))
 
     def action_expand(self) -> None:

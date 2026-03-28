@@ -1,10 +1,11 @@
+from loguru import logger
 from textual.app import App, ComposeResult
 from textual.binding import Binding
 from textual.theme import Theme
 from textual.widgets import Footer
 
-from screen.content import Content
 from screen.control import Header
+from screen.main_screen import MainScreen
 from tool.config import Config
 from tool.i18n import get_i18n
 
@@ -19,7 +20,7 @@ class MBridgeApp(App):
 
     def compose(self) -> ComposeResult:
         yield Header()
-        yield Content()
+        yield MainScreen()
         yield Footer(show_command_palette=False)
 
     def on_mount(self) -> None:
@@ -45,5 +46,18 @@ class MBridgeApp(App):
 
 
 if __name__ == "__main__":
+    logger_format = ("{time:YYYY-MM-DD HH:mm:ss} [{level: ^8}] "
+                     "({file}:{line} | {thread.name}:{module}:{function}) {message}")
+    logger.remove()
+    logger.add(
+        "log/{time:YYYY-MM-DD}.log",
+        format=logger_format,
+        rotation="00:00",
+        enqueue=True,
+        level="TRACE",
+    )
+
+    logger.info("Starting MBridgeApp")
     app = MBridgeApp()
     app.run()
+    logger.info("Ending MBridgeApp")

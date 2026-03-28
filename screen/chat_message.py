@@ -1,7 +1,7 @@
 from textual.app import ComposeResult
 from textual.containers import Right
 from textual.widget import Widget
-from textual.widgets import ListItem, Label
+from textual.widgets import ListItem, Label, ListView
 
 
 class ChatMessage(ListItem):
@@ -29,3 +29,21 @@ class ChatMessage(ListItem):
         else:
             yield Label(self.message, id="content")
             yield Label(self.time, id="time")
+
+
+class ChatMessageList(ListView):
+    def __init__(
+            self,
+            *children: ListItem,
+            name: str | None = None,
+            id: str | None = None,
+            classes: str | None = None
+    ):
+        super().__init__(
+            *children,
+            initial_index=None,
+            name=name,
+            id=id,
+            classes=classes,
+            disabled=True
+        )

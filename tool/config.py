@@ -33,3 +33,6 @@ class Config:
     @classmethod
     def get(cls, key: str, default: Any = None) -> Any:
         return cls._config.get(key, default)
+
+    def __str__(self):
+        return str(self._config)

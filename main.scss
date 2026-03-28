@@ -3,13 +3,24 @@ Footer {
   padding: 0 2;
 }
 
+MainScreen {
+  layout: grid;
+  grid-size: 2 1;
+  grid-columns: 1fr 3fr;
+  padding: 0 2;
+}
+
 FriendList {
   background: $background;
   background-tint: $background;
   border: round $border 40%;
+  border-title-style: none;
   padding: 0 1;
 
-  &:focus {
+  &:focus-within {
+    border: round $border;
+    border-title-style: bold;
+
     & > ListItem.-highlight {
       color: $text-primary;
       background: $primary-muted;
@@ -45,16 +56,31 @@ FriendList {
 Chat {
   layout: vertical;
   border: round $border 40%;
+  border-title-style: none;
   padding: 0 1;
+
+  &:focus-within {
+    border: round $border;
+    border-title-style: bold;
+  }
 }
 
-MessageList {
+ChatMessageList {
   background: $background;
   background-tint: $background;
   padding: 1 0;
+  width: 100%;
+  height: 3fr;
 }
 
 ChatInput {
   background: $background;
   border: round $border 40%;
+  border-title-style: none;
+  height: 1fr;
+
+  &:focus-within {
+    border: round $border;
+    border-title-style: bold;
+  }
 }
