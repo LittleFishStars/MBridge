@@ -13,7 +13,7 @@ class FriendItem(ListItem):
     selected = reactive(False)
 
     def __init__(self, name: str, friend_id: str, **kwargs) -> None:
-        super().__init__(Label(name, **kwargs))
+        super().__init__(Label(name), **kwargs)
         self.friend_name = name
         self.friend_id = friend_id
 
@@ -45,7 +45,7 @@ class FriendList(ListView):
     def on_list_view_selected(self, event) -> None:
         friend: FriendItem = event.item
         if friend != self.selected_child:
-            logger.info(f"ChooseFriend {friend.name}")
+            logger.debug(f"ChooseFriend {friend.friend_name}")
             if self.selected_child is not None:
                 self.selected_child.selected = False
             self.selected_child = friend

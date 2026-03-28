@@ -3,6 +3,19 @@ Footer {
   padding: 0 2;
 }
 
+Header {
+  dock: top;
+  layout: horizontal;
+  padding: 1 3;
+  width: 100%;
+  height: 3;
+}
+
+Clock {
+  background: $background;
+  content-align: center middle;
+}
+
 MainScreen {
   layout: grid;
   grid-size: 2 1;

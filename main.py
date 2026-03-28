@@ -57,7 +57,11 @@ if __name__ == "__main__":
         level="TRACE",
     )
 
-    logger.info("Starting MBridgeApp")
-    app = MBridgeApp()
-    app.run()
-    logger.info("Ending MBridgeApp")
+    try:
+        logger.info(f"Start MBridgeApp. Version {Config().get('version')})")
+        app = MBridgeApp()
+        app.run()
+        logger.info("End MBridgeApp")
+    except Exception as e:
+        logger.error(f"Error: {e}")
+        logger.info("ErrorEnd MBridgeApp")

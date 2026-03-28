@@ -2,6 +2,7 @@
 *.pyc
 
 # Logs
+log/
 *.log
 
 # Virtualenv
