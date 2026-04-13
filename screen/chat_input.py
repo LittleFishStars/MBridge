@@ -10,6 +10,7 @@ _ = get_i18n()
 
 
 class ChatInput(TextArea):
+    """聊天输入框组件"""
     BINDINGS = [
         Binding('ctrl+s', "send_message", _("Send")),
         Binding("ctrl+z", "undo", _("Undo")),

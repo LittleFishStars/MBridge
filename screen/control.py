@@ -12,6 +12,8 @@ _ = get_i18n()
 
 
 class Header(Widget):
+    """标题栏组件"""
+    # 默认CSS样式
     DEFAULT_CSS = """
     #title { text-style: bold; color: $text-primary; }
     #version { color: $text-secondary; }
@@ -25,6 +27,8 @@ class Header(Widget):
 
 
 class Clock(HeaderClockSpace):
+    """时钟组件"""
+
     def _on_mount(self, _) -> None:
         self.set_interval(1, callback=self.refresh, name="update clock")
 

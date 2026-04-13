@@ -5,6 +5,8 @@ from textual.widgets import ListItem, Label, ListView
 
 
 class ChatMessage(ListItem):
+    """聊天消息组件"""
+    # 默认CSS样式
     DEFAULT_CSS = """
     #content {
         color: $text-accent;
@@ -32,6 +34,8 @@ class ChatMessage(ListItem):
 
 
 class ChatMessageList(ListView):
+    """聊天消息列表组件"""
+
     def __init__(
             self,
             *children: ListItem,

@@ -1,0 +1,12 @@
+[project]
+name = "mbridge"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "babel>=2.18.0",
+    "loguru>=0.7.3",
+    "netifaces>=0.11.0",
+    "pycryptodome>=3.23.0",
+    "textual>=8.2.3",
+    "textual-dev>=1.8.0",
+]
